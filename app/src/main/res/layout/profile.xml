@@ -8,7 +8,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:background="@drawable/background"
-    tools:context="com.example.hyqvia.Profile">
+    tools:context="com.example.hyqvia.ankush.Profile">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
 
         <ImageView
             android:id="@+id/profile_pic"
-            android:layout_width="124dp"
+            android:layout_width="125dp"
             android:layout_height="125dp"
             android:background="@drawable/bg_circular"
             android:src="@drawable/profile"

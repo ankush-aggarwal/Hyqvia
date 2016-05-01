@@ -9,7 +9,7 @@
     android:paddingRight="20dp"
     android:weightSum="4"
     android:background="@drawable/background"
-    tools:context="com.example.hyqvia.Home">
+    tools:context="com.example.hyqvia.ankush.Home">
 
     <LinearLayout
         android:layout_width="match_parent"
