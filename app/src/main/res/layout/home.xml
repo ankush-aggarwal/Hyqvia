@@ -22,36 +22,54 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/forum"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/forum"
                 android:scaleType="fitCenter"
+                android:onClick="forum"
                 android:padding="15dp"
                 android:background="@drawable/buttons_circular"/>
+
+            <TextView
+                android:id="@+id/forumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="forum"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/chat"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/chat"
                 android:scaleType="fitCenter"
+                android:onClick="chat"
                 android:padding="15dp"
                 android:background="@drawable/buttons_circular"/>
+
+            <TextView
+                android:id="@+id/chatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="chat"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -67,37 +85,55 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/info"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/info"
                 android:scaleType="fitCenter"
+                android:onClick="info"
                 android:padding="25dp"
                 android:background="@drawable/buttons_circular"/>
+
+            <TextView
+                android:id="@+id/infoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="info"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/story"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:text="MY LIFE MY STORY"
-                android:textSize="20dp"
+                android:textSize="16dp"
+                android:onClick="story"
                 android:scaleType="fitCenter"
                 android:padding="15dp"
                 android:background="@drawable/buttons_circular"/>
+
+            <TextView
+                android:id="@+id/storyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="story"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -105,18 +141,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center"
         android:layout_weight="1">
 
         <ImageButton
             android:id="@+id/profile"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/profile"
             android:scaleType="fitCenter"
-            android:padding="20dp"
+            android:onClick="profile"
+            android:padding="16dp"
             android:background="@drawable/buttons_circular"/>
+
+        <TextView
+            android:id="@+id/profileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="profile"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -132,6 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
+            android:onClick="ambassador"
             android:text="BECOME A PATIENT AMBASSADOR"
             android:textColor="#ffffff"/>
 
