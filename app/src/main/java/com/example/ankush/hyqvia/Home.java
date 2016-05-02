@@ -45,8 +45,8 @@ public class Home extends AppCompatActivity {
     }
 
     public void forum (View view) {
-//        Intent intent = new Intent(Home.this, Forum.class);
-//        startActivity(intent);
+        Intent intent = new Intent(Home.this, Forum_list.class);
+        startActivity(intent);
     }
 
     public void chat (View view) {

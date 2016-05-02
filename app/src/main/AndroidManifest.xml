@@ -48,7 +48,10 @@
             android:name=".New_thread"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"/>
-
+        <activity
+            android:name=".Forum_thread"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
