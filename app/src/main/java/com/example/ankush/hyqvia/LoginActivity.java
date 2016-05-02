@@ -2,7 +2,9 @@ package com.example.ankush.hyqvia;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -101,6 +103,12 @@ public class LoginActivity extends AppCompatActivity {
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     Log.d("Login Successful!", json.toString());
+                    // save user data
+                    SharedPreferences sp = PreferenceManager
+                            .getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString("username", username);
+                    edit.commit();
                     Intent intent = new Intent(LoginActivity.this, Home.class);
                     startActivity(intent);
                     finish();
