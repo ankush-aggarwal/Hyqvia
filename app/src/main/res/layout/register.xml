@@ -50,13 +50,14 @@
             android:hint="Password"/>
 
         <RadioGroup
+            android:id="@+id/role"
             android:layout_width="fill_parent"
             android:background="@drawable/edittext_bg"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/radio_pirates"
+                android:id="@+id/radio_caregiver"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:button="@null"
@@ -65,11 +66,12 @@
                 android:text="Caregiver"/>
 
             <RadioButton
-                android:id="@+id/radio_ninjas"
+                android:id="@+id/radio_patient"
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_height="30dp"
                 android:button="@null"
+                android:checked="true"
                 android:drawableRight="@android:drawable/btn_radio"
                 android:textSize="16dp"
                 android:text="Patient"/>
