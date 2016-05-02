@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/forumSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/edittext_bg"
+        android:hint="Search.."/>
+
+    <View
+        android:id="@+id/forumDivider"
+        android:layout_below="@id/forumSearch"
+        android:layout_height="2dip"
+        android:layout_width="match_parent"
+        android:background="#FF909090" />
+
+
+    <Button
+        android:id="@+id/startThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forumDivider"
+        android:background="@drawable/buttons"
+        android:hint="Start a New Thread..."
+        android:onClick="newThread"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/startThread"
+        android:layout_height="wrap_content">
+
+
+
+    </ListView>
+
+</RelativeLayout>
