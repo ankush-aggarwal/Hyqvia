@@ -55,10 +55,16 @@ public class Home extends AppCompatActivity {
     }
 
     public void info (View view) {
+        Uri uri = Uri.parse("http://www.hyqvia.com/primary-immunodeficiency/"); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
     }
 
     public void story (View view) {
+        Uri uri = Uri.parse("http://www.myigsource.com/enroll-primary-immunodeficiency-support-program/"); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
     }
 
@@ -68,6 +74,9 @@ public class Home extends AppCompatActivity {
     }
 
     public void ambassador (View view) {
+        Uri uri = Uri.parse("http://www.myigsource.com/enroll-primary-immunodeficiency-support-program/"); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
     }
 }
