@@ -42,10 +42,8 @@ public class New_thread extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_thread);
 
-       subject = (EditText)findViewById(R.id.subject);
+        subject = (EditText)findViewById(R.id.subject);
         details = (EditText)findViewById(R.id.details);
-
-
 
     }
 
@@ -93,26 +91,21 @@ public class New_thread extends AppCompatActivity{
                 params.add(new BasicNameValuePair("data", detailsData));
                 params.add(new BasicNameValuePair("user", post_username));
 
-                Log.d("request!", "starting");
                 // getting product details by making HTTP request
                 JSONObject json = jsonParser.makeHttpRequest(
                         LOGIN_URL, "POST", params);
 
-                // check your log for json response
-                Log.d("Login attempt", json.toString());
-
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
-                    Log.d("Created Thread!", json.toString());
+
                     Intent intent = new Intent(New_thread.this, Forum_list.class);
                     startActivity(intent);
                     finish();
                     return json.getString(TAG_MESSAGE);
-                }else{
-                    Log.d("Failed to Create Thread", json.getString(TAG_MESSAGE));
-                    return json.getString(TAG_MESSAGE);
 
+                } else {
+                    return json.getString(TAG_MESSAGE);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -120,21 +113,18 @@ public class New_thread extends AppCompatActivity{
 
             return null;
 
-
         }
 
-        protected void onPostExecute(String file_url) {
+        protected void onPostExecute(String string) {
 
             // dismiss the dialog once product deleted
             pDialog.dismiss();
-            if (file_url != null){
-                Toast.makeText(New_thread.this, file_url, Toast.LENGTH_LONG).show();
+            if (string != null){
+                Toast.makeText(New_thread.this, string, Toast.LENGTH_LONG).show();
             }
 
         }
 
     }
-
-
 
 }

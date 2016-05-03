@@ -33,7 +33,7 @@
         android:layout_centerVertical="true">
 
         <TextView
-            android:id="@+id/entry_text"
+            android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/thread_entry_bg"

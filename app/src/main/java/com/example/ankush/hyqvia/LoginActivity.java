@@ -42,16 +42,12 @@ public class LoginActivity extends AppCompatActivity {
          user = (EditText)findViewById(R.id.username);
          pass = (EditText)findViewById(R.id.password);
 
-
-
-
     }
 
     public void signIn (View view) {
         username = user.getText().toString();
         password = pass.getText().toString();
         new AttemptLogin().execute();
-
 
     }
 
@@ -91,30 +87,26 @@ public class LoginActivity extends AppCompatActivity {
                 params.add(new BasicNameValuePair("username", username));
                 params.add(new BasicNameValuePair("password", password));
 
-                Log.d("request!", "starting");
                 // getting product details by making HTTP request
                 JSONObject json = jsonParser.makeHttpRequest(
                         LOGIN_URL, "POST", params);
 
-                // check your log for json response
-                Log.d("Login attempt", json.toString());
-
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
-                    Log.d("Login Successful!", json.toString());
+
                     // save user data
                     SharedPreferences sp = PreferenceManager
                             .getDefaultSharedPreferences(LoginActivity.this);
                     SharedPreferences.Editor edit = sp.edit();
                     edit.putString("username", username);
                     edit.commit();
+
                     Intent intent = new Intent(LoginActivity.this, Home.class);
                     startActivity(intent);
                     finish();
                     return json.getString(TAG_MESSAGE);
                 }else{
-                    Log.d("Login Failure!", json.getString(TAG_MESSAGE));
                     return json.getString(TAG_MESSAGE);
 
                 }
@@ -124,16 +116,14 @@ public class LoginActivity extends AppCompatActivity {
 
             return null;
 
-
-
         }
 
-        protected void onPostExecute(String file_url) {
+        protected void onPostExecute(String string) {
 
             // dismiss the dialog once product deleted
             pDialog.dismiss();
-            if (file_url != null){
-                Toast.makeText(LoginActivity.this, file_url, Toast.LENGTH_LONG).show();
+            if (string != null){
+                Toast.makeText(LoginActivity.this, string, Toast.LENGTH_LONG).show();
             }
 
         }
