@@ -32,9 +32,6 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
 
     private static final String GET_THREAD_URL = "http://web.engr.illinois.edu/~goverdh2/returnThread.php";
 
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +88,7 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
             int success;
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Forum_list.this);
-            String username = sp.getString("username", null);
+            String username = sp.getString("username", "vikram");
 
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();

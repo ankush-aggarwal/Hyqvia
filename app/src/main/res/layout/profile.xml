@@ -37,12 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_bg"
+                android:textColor="@android:color/black"
                 android:layout_margin="10dp"/>
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:background="@drawable/edittext_bg"
                 android:layout_margin="10dp"/>
 
@@ -59,34 +61,36 @@
         android:text="MESSAGE"
         android:textColor="#ffffff"/>
 
-    <TextView
-        android:id="@+id/username"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_bg"
-        android:layout_marginTop="50dp"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttons"
-        android:text="EDIT USERNAME"
-        android:textColor="#ffffff"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom">
+        <EditText
+            android:id="@+id/info"
+            android:layout_above="@+id/edit_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/edittext_bg"
+            android:clickable="false"
+            android:gravity="top|left"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_marginTop="30dp"/>
 
         <Button
+            android:id="@+id/edit_info"
             android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="editInfo"
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
-            android:text="EDIT PASSWORD"
+            android:text="EDIT ABOUT ME"
             android:textColor="#ffffff"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
