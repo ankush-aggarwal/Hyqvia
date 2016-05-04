@@ -1,8 +1,10 @@
 package com.example.ankush.hyqvia;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -70,7 +72,11 @@ public class Home extends AppCompatActivity {
     }
 
     public void profile (View view) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Home.this);
+        String username = sp.getString("username", null);
+
         Intent intent = new Intent(Home.this, Profile.class);
+        intent.putExtra("uid", username);
         startActivity(intent);
     }
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ import java.util.List;
 /**
  * Created by ankush on 5/2/16.
  */
-public class Forum_thread extends AppCompatActivity {
+public class Forum_thread extends AppCompatActivity implements View.OnClickListener {
 
     JSONObject jsonObject;
 
@@ -60,6 +61,16 @@ public class Forum_thread extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        TextView name_tv = (TextView) v.findViewById(R.id.name);
+        String name = name_tv.getText().toString();
+
+        Intent intent = new Intent(Forum_thread.this, Profile.class);
+        intent.putExtra("uid", name);
+        startActivity(intent);
+    }
+
     class getComments extends AsyncTask<String, String, String> {
 
         //three methods get called, first preExecture, then do in background, and once do
@@ -78,11 +89,6 @@ public class Forum_thread extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... args) {
-
-            // TODO Auto-generated method stub
-            // Check for success tag
-            int success;
-
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("tid", tid));
@@ -95,7 +101,6 @@ public class Forum_thread extends AppCompatActivity {
         }
 
         protected void onPostExecute(String string) {
-
             // dismiss the dialog once product deleted
             pDialog.dismiss();
             populateThread();
@@ -125,6 +130,11 @@ public class Forum_thread extends AppCompatActivity {
                 TextView comment = (TextView) hiddenInfo.findViewById(R.id.comment);
                 comment.setText(comment_obj.getString("data"));
 
+                TextView name = (TextView) hiddenInfo.findViewById(R.id.name);
+                name.setText(comment_obj.getString("uid"));
+
+                hiddenInfo.setOnClickListener(this);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -132,11 +142,8 @@ public class Forum_thread extends AppCompatActivity {
 
         }
 
-        View hiddenInfo = getLayoutInflater().inflate(R.layout.add_thread_entry, myLayout, false);
-        myLayout.addView(hiddenInfo);
-
-        final EditText et_comment = (EditText) hiddenInfo.findViewById(R.id.comment);
-        Button add = (Button) hiddenInfo.findViewById(R.id.add);
+        final EditText et_comment = (EditText) findViewById(R.id.et_comment);
+        Button add = (Button) findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 comment = et_comment.getText().toString();
@@ -205,6 +212,14 @@ public class Forum_thread extends AppCompatActivity {
 
             TextView comment_tv = (TextView) hiddenInfo.findViewById(R.id.comment);
             comment_tv.setText(comment);
+
+            EditText msg = (EditText) findViewById(R.id.et_comment);
+            msg.clearFocus();
+            msg.setText("");
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(
+                    INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
 
     }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -66,7 +67,7 @@ public class Chat extends AppCompatActivity {
         @Override
         protected String doInBackground(String... args) {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Chat.this);
-            username = sp.getString("username", "vikram");
+            username = sp.getString("username", null);
 
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -176,6 +177,14 @@ public class Chat extends AppCompatActivity {
 
             TextView msg_tv = (TextView) hiddenInfo.findViewById(R.id.from_msg);
             msg_tv.setText(data);
+
+            EditText msg = (EditText) findViewById(R.id.msg);
+            msg.clearFocus();
+            msg.setText("");
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(
+                    INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
 
     }

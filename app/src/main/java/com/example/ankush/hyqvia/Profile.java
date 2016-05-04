@@ -2,6 +2,7 @@ package com.example.ankush.hyqvia;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class Profile extends AppCompatActivity {
     TextView email;
     TextView name;
     Button edit;
-    String about_me;
+    String about_me, username;
 
     JSONObject jsonObject;
     JSONParser jsonParser = new JSONParser();
@@ -47,6 +48,8 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+
+        username = getIntent().getExtras().getString("uid");
 
         info = (EditText) findViewById(R.id.info);
         email = (TextView) findViewById(R.id.email);
@@ -84,6 +87,12 @@ public class Profile extends AppCompatActivity {
 
     }
 
+    public void message (View view) {
+        Intent intent = new Intent(Profile.this, Chat.class);
+        intent.putExtra("friend_name", email.getText().toString());
+        startActivity(intent);
+    }
+
     class getUser extends AsyncTask<String, String, String> {
 
         //three methods get called, first preExecture, then do in background, and once do
@@ -102,10 +111,6 @@ public class Profile extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... args) {
-
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Profile.this);
-            String username = sp.getString("username", "vikram");
-
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("uid", username));
@@ -135,10 +140,15 @@ public class Profile extends AppCompatActivity {
 
         try {
             name.setText(user_detail.getString("name"));
-
             email.setText(user_detail.getString("uid"));
-
             info.setText(user_detail.getString("bio"));
+
+            if((user_detail.getString("uid")).equals(username)) {
+                edit.setVisibility(View.VISIBLE);
+            } else {
+                Button message = (Button) findViewById(R.id.profile_message);
+                message.setVisibility(View.VISIBLE);
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -167,7 +177,7 @@ public class Profile extends AppCompatActivity {
         protected String doInBackground(String... args) {
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Profile.this);
-            String username = sp.getString("username", "vikram");
+            String username = sp.getString("username", null);
 
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();

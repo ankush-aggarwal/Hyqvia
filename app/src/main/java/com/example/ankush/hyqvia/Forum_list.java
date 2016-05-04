@@ -88,7 +88,7 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
             int success;
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Forum_list.this);
-            String username = sp.getString("username", "vikram");
+            String username = sp.getString("username", null);
 
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();

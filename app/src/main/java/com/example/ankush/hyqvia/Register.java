@@ -56,26 +56,22 @@ public class Register extends AppCompatActivity {
 
 
     public void signUp (View view) {
+        radioGroup = (RadioGroup) findViewById(R.id.role);
+        btnDisplay = (Button) findViewById(R.id.sign_up);
+        username = name.getText().toString();
+        userpass = pass.getText().toString();
+        useremail = email.getText().toString();
 
-        Intent intent = new Intent(Register.this, Home.class);
-        startActivity(intent);
-        finish();
-//        radioGroup = (RadioGroup) findViewById(R.id.role);
-//        btnDisplay = (Button) findViewById(R.id.sign_up);
-//        username = name.getText().toString();
-//        userpass = pass.getText().toString();
-//        useremail = email.getText().toString();
-//
-//
-//        int selectedId = radioGroup.getCheckedRadioButtonId();
-//
-//
-//        radioButton = (RadioButton)findViewById(selectedId);
-//        role = radioButton.getText().toString();
-//
-//
-//
-//        new CreateUser().execute();
+
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+
+
+        radioButton = (RadioButton)findViewById(selectedId);
+        role = radioButton.getText().toString();
+
+
+
+        new CreateUser().execute();
 
 
 

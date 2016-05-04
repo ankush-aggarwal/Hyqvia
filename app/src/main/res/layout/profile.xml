@@ -53,9 +53,12 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/profile_message"
         android:layout_width="115dp"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="5dp"
+        android:visibility="gone"
+        android:onClick="message"
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
         android:text="MESSAGE"
@@ -86,6 +89,7 @@
             android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
             android:onClick="editInfo"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
             android:text="EDIT ABOUT ME"

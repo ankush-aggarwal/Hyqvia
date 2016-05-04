@@ -71,7 +71,7 @@ public class Messages extends AppCompatActivity implements View.OnClickListener 
         protected String doInBackground(String... args) {
 
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Messages.this);
-            String username = sp.getString("username", "vikram");
+            String username = sp.getString("username", null);
 
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();
