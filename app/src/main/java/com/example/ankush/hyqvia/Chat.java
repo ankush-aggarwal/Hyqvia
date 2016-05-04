@@ -169,9 +169,13 @@ public class Chat extends AppCompatActivity {
 
             // dismiss the dialog once product deleted
             pDialog.dismiss();
-            if (string != null){
-                Toast.makeText(Chat.this, string, Toast.LENGTH_LONG).show();
-            }
+
+            LinearLayout myLayout = (LinearLayout) findViewById(R.id.chat_container);
+            View hiddenInfo = getLayoutInflater().inflate(R.layout.message_sent, myLayout, false);
+            myLayout.addView(hiddenInfo);
+
+            TextView msg_tv = (TextView) hiddenInfo.findViewById(R.id.from_msg);
+            msg_tv.setText(data);
         }
 
     }

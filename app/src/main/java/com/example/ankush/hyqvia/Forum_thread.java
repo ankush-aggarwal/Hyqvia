@@ -164,8 +164,6 @@ public class Forum_thread extends AppCompatActivity {
         @Override
         protected String doInBackground(String... args) {
 
-            // TODO Auto-generated method stub
-            // Check for success tag
             int success;
 
             try {
@@ -201,9 +199,12 @@ public class Forum_thread extends AppCompatActivity {
 
             // dismiss the dialog once product deleted
             pDialog.dismiss();
-            if (string != null){
-                Toast.makeText(Forum_thread.this, string, Toast.LENGTH_LONG).show();
-            }
+            LinearLayout myLayout = (LinearLayout)findViewById(R.id.thread_container);
+            View hiddenInfo = getLayoutInflater().inflate(R.layout.forum_thread_entry, myLayout, false);
+            myLayout.addView(hiddenInfo);
+
+            TextView comment_tv = (TextView) hiddenInfo.findViewById(R.id.comment);
+            comment_tv.setText(comment);
         }
 
     }
