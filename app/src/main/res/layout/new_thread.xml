@@ -8,6 +8,7 @@
         android:id="@+id/subject"
         android:background="@drawable/edittext_bg"
         android:layout_marginLeft="20dp"
+        android:singleLine="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"

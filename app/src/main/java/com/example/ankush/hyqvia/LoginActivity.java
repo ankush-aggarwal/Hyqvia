@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences sp = PreferenceManager
                             .getDefaultSharedPreferences(LoginActivity.this);
                     SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("username", username);
+                    edit.putString("username", username.toLowerCase());
                     edit.commit();
 
                     Intent intent = new Intent(LoginActivity.this, Home.class);
@@ -125,8 +125,6 @@ public class LoginActivity extends AppCompatActivity {
             if (string != null){
                 Toast.makeText(LoginActivity.this, string, Toast.LENGTH_LONG).show();
             }
-
         }
-
     }
 }

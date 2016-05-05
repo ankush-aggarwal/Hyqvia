@@ -2,8 +2,10 @@ package com.example.ankush.hyqvia;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -121,6 +123,14 @@ public class Register extends AppCompatActivity {
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     Log.d("User Created!", json.toString());
+
+                    // save user data
+                    SharedPreferences sp = PreferenceManager
+                            .getDefaultSharedPreferences(Register.this);
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString("username", username.toLowerCase());
+                    edit.commit();
+
                     Intent intent = new Intent(Register.this, Home.class);
                     startActivity(intent);
                     finish();

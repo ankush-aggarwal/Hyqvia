@@ -31,6 +31,7 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
     private ProgressDialog pDialog;
 
     private static final String GET_THREAD_URL = "http://web.engr.illinois.edu/~goverdh2/returnThread.php";
+    String[] data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +47,16 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
         TextView tid_tv = (TextView) v.findViewById(R.id.tid);
         String tid = tid_tv.getText().toString();
 
+        TextView id_tv = (TextView) v.findViewById(R.id.id);
+        String id = id_tv.getText().toString();
+
         TextView subject_tv = (TextView) v.findViewById(R.id.forum_subject);
         String subject = subject_tv.getText().toString();
-
-        TextView data_tv = (TextView) v.findViewById(R.id.data);
-        String data = data_tv.getText().toString();
 
         Intent intent = new Intent(Forum_list.this, Forum_thread.class);
         intent.putExtra("tid", tid);
         intent.putExtra("subject", subject);
-        intent.putExtra("data", data);
+        intent.putExtra("data", data[Integer.parseInt(id)]);
         startActivity(intent);
     }
 
@@ -117,6 +118,8 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
             e.printStackTrace();
         }
 
+        data = new String[jsonArray.length()];
+
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject thread = null;
             try {
@@ -129,11 +132,15 @@ public class Forum_list extends AppCompatActivity implements View.OnClickListene
                 TextView subject = (TextView) hiddenInfo.findViewById(R.id.forum_subject);
                 subject.setText(thread.getString("subject"));
 
-                TextView data = (TextView) hiddenInfo.findViewById(R.id.data);
-                data.setText(thread.getString("data"));
+                TextView data_tv = (TextView) hiddenInfo.findViewById(R.id.data);
+                data_tv.setText(thread.getString("data"));
+                data[i] = thread.getString("data");
 
                 TextView tid = (TextView) hiddenInfo.findViewById(R.id.tid);
                 tid.setText(thread.getString("tid"));
+
+                TextView id_tv = (TextView) hiddenInfo.findViewById(R.id.id);
+                id_tv.setText(""+i);
 
                 hiddenInfo.setOnClickListener(this);
             } catch (Exception e) {

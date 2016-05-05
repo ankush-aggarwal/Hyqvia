@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:singleLine="true"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edittext_bg"
             android:hint="Username"/>
@@ -35,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:singleLine="true"
             android:background="@drawable/edittext_bg"
             android:hint="Password"/>
 

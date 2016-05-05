@@ -143,7 +143,10 @@ public class Profile extends AppCompatActivity {
             email.setText(user_detail.getString("uid"));
             info.setText(user_detail.getString("bio"));
 
-            if((user_detail.getString("uid")).equals(username)) {
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Profile.this);
+            String current_user = sp.getString("username", null);
+
+            if((user_detail.getString("uid")).equals(current_user)) {
                 edit.setVisibility(View.VISIBLE);
             } else {
                 Button message = (Button) findViewById(R.id.profile_message);
@@ -175,10 +178,6 @@ public class Profile extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... args) {
-
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Profile.this);
-            String username = sp.getString("username", null);
-
             // Building Parameters
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("uid", username));
